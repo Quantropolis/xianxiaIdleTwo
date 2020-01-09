@@ -1,9 +1,240 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  
+  <title>Xianxia Idle Two</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
 
+  <div class = "row">
+    <div class = "col s3">
+      <progress id = "mainProgress" value = "0", max = "1" style = "width: 100%;"></progress>
+      <h3 style = "text-align: center;" id = "rankLbl"></h3>
+      <img id = "monkImg" src = "Assets/monk/(1)monk.png" style = "width:100%; margin-left:auto; margin-right: auto; outline: none;"></img>
+      <h5 id = "combatRatingLbl" style = "text-align: center;">Combat Rating: 0</h5>
+      <h5 id = "spiritStonesLbl" style = "text-align: center;">Spirit Stones: 0</h5>
+      <h5 id = "cyclesLbl" style = "text-align: center;">Cycles / sec: 0</h5>
+    </div>
+    <div class = "col s9">
+      <ul class="tabs">
+        <li class="tab col s2"><a href="#fightDiv">Fight</a></li>
+        <li class="tab col s2"><a href="#shopDiv">Shop</a></li>
+        <li class="tab col s2"><a href="#techDiv">Techniques</a></li>
+        <li class="tab col s2 disabled"><a href="#daoDiv">Dao</a></li>
+        <li class="tab col s2 disabled"><a href="#legacyDiv">Legacy</a></li>
+        <li class="tab col s2 disabled"><a href="#reinDiv">Reincarnate</a></li>
+      </ul>
+      <div id = "fightDiv">
+        <h3 style = "text-align: center;">Mortal Rank Fights</h3>
+        <br />
+        <ul class="collapsible">
+          <li>
+            <div class="collapsible-header">Fellow Student</div>
+            <div class="collapsible-body">
+              <span><b>During a normal day at the academy you get into a scuffle with another student, who knows some basic fighting techniques.</b></span>
+              <br />
+              <span>Combat Rating: 1</span>
+              <br />
+              <span>Reward: 1 S.S.</span>
+              <br />
+              <span id = "mortalFightOneProbabilityLbl">Win Probability: 0%</span>
+              <br />
+              <progress id = "fightMortalOneProgress" value = "1" max = "1" style = "display: block; margin-left: auto; margin-right: auto; width: 40%;"></progress>
+              <a id = "fightMortalOneBtn" style = "width: 40%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn">Fight</a>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header">Son of Town Guard</div>
+            <div class="collapsible-body">
+              <span><b>You accidentally annoy the son of a local guard, who has recieved some fighting training from his Dad.</b></span>
+              <br />
+              <span>Combat Rating: 3</span>
+              <br />
+              <span>Reward: 2 S.S.</span>
+              <br />
+              <span id = "mortalFightTwoProbabilityLbl">Win Probability: 0%</span>
+              <br />
+              <progress id = "fightMortalTwoProgress" value = "1" max = "1" style = "display: block; margin-left: auto; margin-right: auto; width: 40%;"></progress>
+              <a id = "fightMortalTwoBtn" style = "width: 40%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn">Fight</a>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header">Minor Clan Member</div>
+            <div class="collapsible-body">
+              <span><b>Remember that student you beat up? He was friends with a member of one of the local cultivation clans. Thankfully they are a minor branch member, who hasn't been able to start cultivating. Still, he has recieved relatively intense fighting training from a young age.</b></span>
+              <br />
+              <span>Combat Rating: 7</span>
+              <br />
+              <span>Reward: 5 S.S.</span>
+              <br />
+              <span id = "mortalFightThreeProbabilityLbl">Win Probability: 0%</span>
+              <br />
+              <progress id = "fightMortalThreeProgress" value = "1" max = "1" style = "display: block; margin-left: auto; margin-right: auto; width: 40%;"></progress>
+              <a id = "fightMortalThreeBtn" style = "width: 40%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn">Fight</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div id = "shopDiv">
+        <h3 style = "text-align: center;">Basic Techniques</h3>
+        <br />
+        <ul class="collapsible">
+          <li>
+            <div class="collapsible-header">Basic Fist Technique</div>
+            <div class="collapsible-body">
+              <span><b>The most basic of basics, the fist technique, upon learning gives the basic capabilities to fight, and upon mastery grant a moderate level of unarmed combat skills.</b></span>
+              <br />
+              <span>Combat Rating: 1-7</span>
+              <br />
+              <span>Cost: Free</span>
+              <br />
+              <a id = "techUnarmedPurchaseOneBtn" style = "width: 40%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn">Buy</a>
+              <h5 id = "techUnarmedPurchaseOneBtnLbl" style = "display: none;">Bought!</h5>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header">Basic Sword Technique</div>
+            <div class="collapsible-body">
+              <span><b>If you want to learn how not to stab yourself in the foot by accident, this is the manual for you.</b></span>
+              <br />
+              <span>Combat Rating: 1-7</span>
+              <br />
+              <span>Cost: 3 S.S.</span>
+              <br />
+              <a id = "techWeaponPurchaseOneBtn" style = "width: 40%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn">Buy</a>
+              <h5 id = "techWeaponPurchaseOneBtnLbl" style = "display: none;">Bought!</h5>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header">Basic Movement Technique</div>
+            <div class="collapsible-body">
+              <span><b>Since you learned to hit other people, how about you learn how not to get hit by them.</b></span>
+              <br />
+              <span>Combat Rating: 1-7</span>
+              <br />
+              <span>Cost: 5 S.S.</span>
+              <br />
+              <a id = "techMovementPurchaseOneBtn" style = "width: 40%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn">Buy</a>
+              <h5 id = "techMovementPurchaseOneBtnLbl" style = "display: none;">Bought!</h5>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header">Basic Defensive Technique</div>
+            <div class="collapsible-body">
+              <span><b>What if you try to dodge but fail? That's where the defensive technique comes in. Is this one good? Not particularly, but it is better than nothing.</b></span>
+              <br />
+              <span>Combat Rating: 1-7</span>
+              <br />
+              <span>Cost: 7 S.S.</span>
+              <br />
+              <a id = "techDefensivePurchaseOneBtn" style = "width: 40%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn">Buy</a>
+              <h5 id = "techDefensivePurchaseOneBtnLbl" style = "display: none;">Bought!</h5>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header">Basic Cultivation Technique</div>
+            <div class="collapsible-body">
+              <span><b>Want to become immortal? Want to gain true strength? Want to eviscerate your enemies and make their families cower and flee? Buy the basic cultivation technique today for the cheap price of 10, that's right, 10 Spirit Stones!</b></span>
+              <br />
+              <span>Cycles / sec: 1-7</span>
+              <br />
+              <span>Cost: 10 S.S.</span>
+              <br />
+              <a id = "techCultivationPurchaseOneBtn" style = "width: 40%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn">Buy</a>
+              <h5 id = "techCultivationPurchaseOneBtnLbl" style = "display: none;">Bought!</h5>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div id = "techDiv">
+
+        <a id = "genXpBtn" style = "width: 80%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn disabled">Generate Xp</a>
+
+        <h3 style = "text-align: center;">Basic Rank Techniques</h3>
+        <br />
+        <ul class = "collapsible">
+          <li id = "techUnarmedTrainOneBtnSection" style = "display: none;">
+            <div class="collapsible-header">Basic Fist Technique</div>
+            <div class="collapsible-body">
+              <span id = "techUnarmedCROneLbl">Combat Rating: 1</span>
+              <br />
+              <span id = "techUnarmedLevelOneLbl">Level: 1</span>
+              <br />
+              <span>Max Level: 5</span>
+              <br />
+              <progress id = "techUnarmedTrainOneProgress" value = "0" max = "1" style = "display: block; margin-left: auto; margin-right: auto; width: 40%;"></progress>
+              <a id = "techUnarmedTrainOneBtn" style = "width: 40%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn">Train</a>
+            </div>
+          </li>
+          <li id = "techWeaponTrainOneBtnSection" style = "display: none;">
+            <div class="collapsible-header">Basic Sword Technique</div>
+            <div class="collapsible-body">
+              <span id = "techWeaponCROneLbl">Combat Rating: 1</span>
+              <br />
+              <span id = "techWeaponLevelOneLbl">Level: 1</span>
+              <br />
+              <span>Max Level: 5</span>
+              <br />
+              <progress id = "techWeaponTrainOneProgress" value = "0" max = "1" style = "display: block; margin-left: auto; margin-right: auto; width: 40%;"></progress>
+              <a id = "techWeaponTrainOneBtn" style = "width: 40%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn">Train</a>
+            </div>
+          </li>
+          <li id = "techMovementTrainOneBtnSection" style = "display: none;">
+            <div class="collapsible-header">Basic Movement Technique</div>
+            <div class="collapsible-body">
+              <span id = "techMovementCROneLbl">Combat Rating: 1</span>
+              <br />
+              <span id = "techMovementLevelOneLbl">Level: 1</span>
+              <br />
+              <span>Max Level: 5</span>
+              <br />
+              <progress id = "techMovementTrainOneProgress" value = "0" max = "1" style = "display: block; margin-left: auto; margin-right: auto; width: 40%;"></progress>
+              <a id = "techMovementTrainOneBtn" style = "width: 40%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn">Train</a>
+            </div>
+          </li>
+          <li id = "techDefensiveTrainOneBtnSection" style = "display: none;">
+            <div class="collapsible-header">Basic Defensive Technique</div>
+            <div class="collapsible-body">
+              <span id = "techDefensiveCROneLbl">Combat Rating: 1</span>
+              <br />
+              <span id = "techDefensiveLevelOneLbl">Level: 1</span>
+              <br />
+              <span>Max Level: 5</span>
+              <br />
+              <progress id = "techDefensiveTrainOneProgress" value = "0" max = "1" style = "display: block; margin-left: auto; margin-right: auto; width: 40%;"></progress>
+              <a id = "techDefensiveTrainOneBtn" style = "width: 40%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn">Train</a>
+            </div>
+          </li>
+          <li id = "techCultivationTrainOneBtnSection" style = "display: none;">
+            <div class="collapsible-header">Basic Cultivation Technique</div>
+            <div class="collapsible-body">
+              <span id = "techCultivationCROneLbl">Cycles / sec: 1</span>
+              <br />
+              <span id = "techCultivationLevelOneLbl">Level: 1</span>
+              <br />
+              <span>Max Level: 5</span>
+              <br />
+              <progress id = "techCultivationTrainOneProgress" value = "0" max = "1" style = "display: block; margin-left: auto; margin-right: auto; width: 40%;"></progress>
+              <a id = "techCultivationTrainOneBtn" style = "width: 40%; display: block; margin-left: auto; margin-right: auto;" class = "waves-effect waves-light btn">Train</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id = "daoDiv">
+
+      </div>
+      <div id = "legacyDiv">
+
+      </div>
+      <div id = "reinDiv">
+
+      </div>
+    </div>
+  </div>
+
+  <script src = "game.js"></script>
 </body>
 </html>
